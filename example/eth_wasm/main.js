@@ -10,8 +10,8 @@ import fs from 'node:fs'
 
 const vkey = fs.readFileSync('../binaries/eth_vk.bin');
 
-// Download the proof from https://ethproofs.org/clusters/84a01f4b-8078-44cf-b463-90ddcd124960 > 24080700
-const proof = fs.readFileSync('../binaries/zkm_84a01f4b-8078-44cf-b463-90ddcd124960_11065151.bin');
+// Download the proof from https://ethproofs.org/clusters/84a01f4b-8078-44cf-b463-90ddcd124960
+const proof = fs.readFileSync('../binaries/zkm_cad02a8f-d888-4361-b9e8-c535d60dd2c0_28451126.bin');
 
 const startTime = performance.now();
 const result = wasm.verify_stark_proof(proof, vkey);
@@ -19,4 +19,4 @@ const endTime = performance.now();
 
 console.log(`stark verification took ${endTime - startTime}ms`);
 console.assert(result, "result:", result, "proof should be valid");
-console.log(`ETH proof is valid.`);
+console.log(`ETH proof is valid: ${result}`);
